@@ -28,7 +28,6 @@ public class Lab9Groceries {
 		int most = 0;
 		int least = 0;
 		int userNum = 0;
-		       
 
 		menu.put("Apple", .99);
 		menu.put("Banana", .59);
@@ -62,7 +61,7 @@ public class Lab9Groceries {
 			System.out.println("What would you like to buy?");
 			userPurchase = scnr.nextLine();
 			if (doWeCarry(menu, userPurchase)) {
-				
+
 				boughtItems.add(whichItem(menu, userPurchase));
 				prices.add(howMuch(menu, userPurchase));
 				counter++;
@@ -70,8 +69,8 @@ public class Lab9Groceries {
 
 			} else if (userPurchase.equalsIgnoreCase("menu")) {
 				printMenu(menu);
-			} else if (numbers(userPurchase)) { 
-				userNum = (userPurchase.charAt(0)-48);
+			} else if (numbers(userPurchase)) {
+				userNum = (userPurchase.charAt(0) - 48);
 				boughtItems.add(whichItemNum(menu, userNum));
 				prices.add(howMuchNum(menu, userNum));
 				counter++;
@@ -93,9 +92,10 @@ public class Lab9Groceries {
 		}
 		averagePrice(avg, counter);
 		least = lowestCost(prices, counter);
-		most = highestCost(prices,counter);
+		most = highestCost(prices, counter);
 		System.out.println("The cheapest item is " + boughtItems.get(least) + ", and it costs $" + prices.get(least));
-		System.out.println("The most expensive item is "+ boughtItems.get(most) + ", and it costs $" + prices.get(most));
+		System.out
+				.println("The most expensive item is " + boughtItems.get(most) + ", and it costs $" + prices.get(most));
 		System.out.println("Goodbye");
 
 	}
@@ -104,11 +104,11 @@ public class Lab9Groceries {
 
 		Set<String> menuKeys = menu.keySet();
 
-		System.out.printf("%-5s %-10s %16s\n","num", "Item", "Price");
+		System.out.printf("%-5s %-10s %16s\n", "num", "Item", "Price");
 		System.out.printf("=====================================\n");
 		int i = 1;
 		for (String grocery : menuKeys) {
-			System.out.printf("%-5s %-14s   %10.2f\n",i, grocery, menu.get(grocery));
+			System.out.printf("%-5s %-14s   %10.2f\n", i, grocery, menu.get(grocery));
 			i++;
 
 		}
@@ -128,7 +128,7 @@ public class Lab9Groceries {
 		return false;
 	}
 
-		public static String whichItem(Map menu, String shopList) {
+	public static String whichItem(Map menu, String shopList) {
 
 		Set<String> menuKeys = menu.keySet();
 
@@ -155,6 +155,7 @@ public class Lab9Groceries {
 		}
 		return .00;
 	}
+
 	public static String whichItemNum(Map menu, int shopNum) {
 
 		Set<String> menuKeys = menu.keySet();
@@ -196,30 +197,28 @@ public class Lab9Groceries {
 		int highestIndex = 0;
 		List<Double> sortedPrices = new ArrayList(prices);
 		Collections.sort(sortedPrices);
-		
+
 		int length = sortedPrices.size();
-		
-		return (prices.indexOf(sortedPrices.get(length-1)));
+
+		return (prices.indexOf(sortedPrices.get(length - 1)));
 
 	}
-	
+
 	public static int lowestCost(List prices, int counter) {
 		int lowestIndex = 0;
 		List<Double> sortedPrices = new ArrayList(prices);
 		Collections.sort(sortedPrices);
-		
-		
-		
+
 		return (prices.indexOf(sortedPrices.get(0)));
 
 	}
+
 	public static boolean numbers(String userResponse) {
 
-		 Pattern p = Pattern.compile("[1-8]");
-		 Matcher m = p.matcher(userResponse);
-		 boolean b = m.matches();
-	        
-	        return b;
-	    }
-	}
+		Pattern p = Pattern.compile("[1-8]");
+		Matcher m = p.matcher(userResponse);
+		boolean b = m.matches();
 
+		return b;
+	}
+}
